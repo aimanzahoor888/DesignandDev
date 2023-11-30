@@ -24,7 +24,8 @@ const Registration = () => {
 
     useEffect(() => {
         if (signedUp) {
-            history.push('/sell-now');
+            // Redirect to ThankYou page after successful signup
+            history.push('/thank-you');
         }
     }, [signedUp, history]);
 
