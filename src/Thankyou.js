@@ -7,7 +7,7 @@ const ThankYou = () => {
     return (
         <div>
             <h3>Thank you for creating your account</h3>
-            <Link to="/login">Next</Link>
+            <Link to="/sell-now">Next</Link>
         </div>
     );
 };

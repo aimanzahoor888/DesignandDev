@@ -24,7 +24,7 @@ const Registration = () => {
 
     useEffect(() => {
         if (signedUp) {
-            history.push('/thank-you');
+            history.push('/sell-now');
         }
     }, [signedUp, history]);
 
@@ -37,7 +37,7 @@ const Registration = () => {
 
                 <label>Password:</label>
                 <input type="password" value={password} onChange={handlePasswordChange} />
-                <br></br>
+                <br />
                 <button type="button" onClick={handleSignUp}>
                     Sign Up
                 </button>
