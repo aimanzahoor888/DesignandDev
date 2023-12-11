@@ -1,0 +1,174 @@
+/* styles.css */
+
+/* Larger screens */
+.container {
+  width: 80%;
+}
+
+/* Medium screens */
+@media (max-width: 768px) {
+  .container {
+    width: 90%;
+  }
+}
+
+/* Small screens */
+@media (max-width: 576px) {
+  .container {
+    width: 95%;
+  }
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  /*display: flex;  on commenting  it size will be biger*/
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.container {
+  margin: 80px auto 20px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+  background-color: #8A307F; /* Raspberry color */
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+h1 {
+  margin: 0;
+}
+
+h2 {
+  color: #8A307F; /* Raspberry color */
+  text-align: center;
+  font-size: 2em;
+  margin-top: 20px;
+}
+
+h3 {
+  color: #8A307F; /* Raspberry color */
+  text-align: center;
+  font-size: 1em;
+  margin-top: 30px;
+}
+
+h4 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #8A307F; /* Raspberry color */
+  text-align: center;
+  font-size: 3em;
+  margin-top: 90px;
+}
+
+strong {display: block;
+  margin-bottom: 10px;
+  color: #8A307F; /* Raspberry color */
+  font-size: 1.5em;
+
+}
+
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  color: #8A307F; /* Raspberry color */
+  font-size: 1.5em;
+}
+
+textarea{
+  width: 100%;
+  
+  box-sizing: border-box;
+  margin: 0 auto;
+  margin-bottom: 15px;
+  padding: 8px;
+}
+
+input {
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+  margin: 0 auto;
+  margin-bottom: 15px;
+  padding: 8px;
+}
+
+.button-container {
+ display: flex;
+  justify-content: space-around; /* Adjust as needed */
+}
+
+button {
+  background-color: #8A307F; /* Raspberry color */
+  color: #fff;
+  padding: 15px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5em;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #79A7D3; /* Light Blue color on hover */
+}
+
+a {
+  color: #6883BC; /* Dark Blue color */
+  font-size: 1em;
+  margin-right: 20px;
+  text-decoration: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.centered-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.short-button {
+  width: 80px; /* Adjust the width as needed */
+  padding: 8px; /* Adjust the padding as needed */
+  font-size: 0.8em; /* Adjust the font size as needed */
+  margin-right: 10px; /* Adjust the margin as needed */
+}
+
+.product-list {
+  margin-top: 20px;
+}
+
+.product-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
