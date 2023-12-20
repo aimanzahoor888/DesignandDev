@@ -10,7 +10,7 @@ const ThankYou = () => {
                 <h1>Thriftn</h1>
             </header>
             <div className="thank-you-content">
-                <h3 style={{ fontSize: '3em' }}>Thank you for creating your account</h3>
+                <h4 >Thank you for creating your account</h4>
                 <Link to="/sell-now">Next</Link>
             </div>
         </div>

@@ -1,4 +1,4 @@
-// src/ForgetPassword.js
+// ForgetPassword.js
 import 'whatwg-fetch';
 
 import './styles.css';
@@ -11,39 +11,46 @@ const ForgetPassword = () => {
     const handleEmailChange = (e) => setEmail(e.target.value);
 
     const handleForgetPassword = async () => {
-        console.log('Submit button clicked'); // Add this line
         try {
-            // TODO: Send forget password request to the backend
-            const response = await fetch('/api/forget-password', {
+            const response = await fetch('http://localhost:5000/api/forget-password', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ email }),
             });
-
+    
             if (response.ok) {
-                // Display a message that an email has been sent for password reset
                 console.log('Password reset email sent');
+                // Display a success message to the user
+                alert('Password reset email sent successfully');
             } else {
-                // Handle forget password error
-                console.error('Forget password failed');
+                const data = await response.json();
+                if (response.status === 404) {
+                    // User not found (account does not exist)
+                    alert('Account does not exist on this email.');
+                } else {
+                    // Handle other errors
+                    console.error('Forget password failed:', data.message);
+                    alert('Forget password failed. Please try again.');
+                }
             }
         } catch (error) {
             console.error('Error during forget password:', error);
         }
     };
+    
 
     return (
         <div>
             <h2>Forget Password</h2>
             <label>Email:</label>
             <input type="email" value={email} onChange={handleEmailChange} />
-        
+
             <button type="button" onClick={handleForgetPassword}>
                 Submit
             </button>
-            <br></br>
+            <br />
             <Link to="/login">Back to Login</Link>
         </div>
     );

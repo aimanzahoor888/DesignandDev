@@ -1,33 +1,40 @@
 // src/Registration.js
 import './styles.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 const Registration = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [signedUp, setSignedUp] = useState(false);
+    const [registrationError, setRegistrationError] = useState('');
     const history = useHistory();
 
     const handleEmailChange = (e) => setEmail(e.target.value);
     const handlePasswordChange = (e) => setPassword(e.target.value);
 
-    const handleSignUp = () => {
-        // Add logic to send data to the server (Node.js backend)
-        console.log('Email:', email);
-        console.log('Password:', password);
-        // For simplicity, consider signup successful after a delay
-        setTimeout(() => {
-            setSignedUp(true);
-        }, 1000);
-    };
+    const handleSignUp = async () => {
+        try {
+            const response = await fetch('http://localhost:5000/api/register', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ email, password }),
+});
 
-    useEffect(() => {
-        if (signedUp) {
-            // Redirect to ThankYou page after successful signup
-            history.push('/thank-you');
+
+            if (response.ok) {
+                // Registration successful, redirect to ThankYou page
+                history.push('/thank-you');
+            } else {
+                // Handle registration error
+                const data = await response.json();
+                setRegistrationError(data.message);
+            }
+        } catch (error) {
+            console.error('Error during registration:', error);
         }
-    }, [signedUp, history]);
+    };
 
     return (
         <div>
@@ -38,10 +45,15 @@ const Registration = () => {
 
                 <label>Password:</label>
                 <input type="password" value={password} onChange={handlePasswordChange} />
+
                 <br />
                 <button type="button" onClick={handleSignUp}>
                     Sign Up
                 </button>
+
+                {registrationError && (
+                    <div style={{ color: 'red', marginTop: '10px' }}>{registrationError}</div>
+                )}
             </form>
         </div>
     );
