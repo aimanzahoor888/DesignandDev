@@ -4,59 +4,64 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 const Registration = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [registrationError, setRegistrationError] = useState('');
-    const history = useHistory();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [registrationError, setRegistrationError] = useState('');
+  const history = useHistory();
 
-    const handleEmailChange = (e) => setEmail(e.target.value);
-    const handlePasswordChange = (e) => setPassword(e.target.value);
+  const handleEmailChange = (e) => setEmail(e.target.value);
+  const handlePasswordChange = (e) => setPassword(e.target.value);
 
-    const handleSignUp = async () => {
-        try {
-            const response = await fetch('http://localhost:5000/api/register', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ email, password }),
-});
+  const handleSignUp = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
 
+      if (response.ok) {
+        // Registration successful, redirect to ThankYou page
+        history.push('/thank-you');
+      } else {
+        // Handle registration error
+        const data = await response.json();
+        setRegistrationError(data.message);
+      }
+    } catch (error) {
+      console.error('Error during registration:', error);
+    }
+  };
 
-            if (response.ok) {
-                // Registration successful, redirect to ThankYou page
-                history.push('/thank-you');
-            } else {
-                // Handle registration error
-                const data = await response.json();
-                setRegistrationError(data.message);
-            }
-        } catch (error) {
-            console.error('Error during registration:', error);
-        }
-    };
+  return (
+    <div style={{ display: 'flex', height: '97vh', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+      {/* Background image container with blur effect */}
+      <div style={{ position: 'absolute', width: '100%', height: '100%', zIndex: -1, filter: 'blur(10px)' }}>
+        <img src="/Image1.jpg" alt="Background" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '8px' }} />
+      </div>
 
-    return (
-        <div>
-            <h2>Thrifn Registration</h2>
-            <form>
-                <label>Email:</label>
-                <input type="email" value={email} onChange={handleEmailChange} />
+      {/* Content container */}
+      <div style={{ width: '400px', padding: '20px', background: '#a7bed3', borderRadius: '8px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
+        <h2 style={{ color: '#000000', fontSize: '2em', textTransform: 'uppercase', marginBottom: '20px', fontFamily: 'Argent CF', fontWeight: 'bold', letterSpacing: '4px', textShadow: '4px 4px 4px rgba(0, 0, 0, 0.5)' }}>THr!ftN Registration</h2>
 
-                <label>Password:</label>
-                <input type="password" value={password} onChange={handlePasswordChange} />
+        <form style={{ display: 'flex', flexDirection: 'column' }}>
+          <label style={{ marginBottom: '5px', color: '#000000' }}>Email:</label>
+          <input type="email" value={email} onChange={handleEmailChange} style={{ padding: '8px', marginBottom: '15px', borderRadius: '4px', border: '1px solid #A8CABA' }} />
 
-                <br />
-                <button type="button" onClick={handleSignUp}>
-                    Sign Up
-                </button>
+          <label style={{ marginBottom: '5px', color: '#000000' }}>Password:</label>
+          <input type="password" value={password} onChange={handlePasswordChange} style={{ padding: '8px', marginBottom: '20px', borderRadius: '4px', border: '1px solid #A8CABA' }} />
 
-                {registrationError && (
-                    <div style={{ color: 'red', marginTop: '10px' }}>{registrationError}</div>
-                )}
-            </form>
-        </div>
-    );
+          <button type="button" onClick={handleSignUp} style={{ background: '#f1ffc4', color: '#000000', padding: '10px', borderRadius: '4px', cursor: 'pointer' }}>
+            Sign Up
+          </button>
+
+          {registrationError && <div style={{ color: '#FF4500', marginTop: '10px', textAlign: 'center' }}>{registrationError}</div>}
+        </form>
+      </div>
+    </div>
+  );
 };
 
 export default Registration;
