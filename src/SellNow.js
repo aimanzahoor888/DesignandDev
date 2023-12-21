@@ -25,7 +25,7 @@ const SellNow = () => {
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          marginBottom: '10px', // Reduced margin from 20px to 10px
+          marginBottom: '10px',
           background: '#a7bed3',
           padding: '10px 20px',
           borderRadius: '8px',
@@ -33,21 +33,37 @@ const SellNow = () => {
           boxSizing: 'border-box',
         }}
       >
-        <h1
-          style={{
-            color: '#000000',
-            fontSize: '2em',
-            textTransform: 'uppercase',
-            margin: '0',
-            fontFamily: 'Greycliff CF',
-            fontWeight: 'bold',
-            letterSpacing: '4px',
-            textShadow: '4px 4px 4px rgba(0, 0, 0, 0.5)',
-          }}
-        >
-          THr!ftN
-        </h1>
-        <div>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <h1
+            style={{
+              color: '#000000',
+              fontSize: '2em',
+              textTransform: 'uppercase',
+              margin: '0',
+              fontFamily: 'Greycliff CF',
+              fontWeight: 'bold',
+              letterSpacing: '4px',
+              textShadow: '4px 4px 4px rgba(0, 0, 0, 0.5)',
+              marginRight: '20px', // Added margin for separation
+            }}
+          >
+            THr!ftN
+          </h1>
+          {/* Make the search bar longer */}
+          <input
+            type="text"
+            placeholder="Search...."
+            style={{
+              padding: '4px',
+              borderRadius: '5px',
+              marginTop:'3.5%',
+              width: '400px', // Adjust the width as needed
+              border: '1px solid #000000',
+            }}
+          />
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          {/* Wishlist button in heart shape */}
           <Link
             to="/wishlist"
             style={{
@@ -57,12 +73,27 @@ const SellNow = () => {
               textDecoration: 'none',
               fontSize: '1.2em',
               padding: '10px 15px',
-              borderRadius: '4px',
+              borderRadius: '50%', // Make it a circle
               marginRight: '10px',
+              display: 'flex',
+              alignItems: 'center',
             }}
           >
-            Wish List
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#000000"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              width="24"
+              height="24"
+            >
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
           </Link>
+          {/* Other navigation links */}
           <Link
             to="/your-products"
             style={{
@@ -76,7 +107,7 @@ const SellNow = () => {
               marginRight: '10px',
             }}
           >
-            Your Products
+            My Items
           </Link>
           <Link
             to="/choose-category"
@@ -108,7 +139,7 @@ const SellNow = () => {
             width: '100%',
             borderRadius: '8px',
             padding: '20px',
-            marginTop: '0px', // Reduced margin from 20px to 10px
+            marginTop: '0px',
             fontFamily: 'Argent CF',
             background: '#c6e2e9',
             boxSizing: 'border-box',
