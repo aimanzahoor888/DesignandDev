@@ -3,9 +3,13 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Switch from 'react-switch';
 import ProductDetails from './ProductDetails';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+
 import './styles.css';
 
 const AddProduct = () => {
+  const [products, setProducts] = useState([]);
   const [productTitle, setProductTitle] = useState('');
   const [productPictures, setProductPictures] = useState([]);
   const [productDescription, setProductDescription] = useState('');
@@ -18,7 +22,7 @@ const AddProduct = () => {
   const [authorName, setAuthorName] = useState('');
   const [submittedProduct, setSubmittedProduct] = useState(null);
   const [error, setError] = useState('');
-
+  const [searchQuery, setSearchQuery] = useState('');
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
@@ -62,6 +66,14 @@ const AddProduct = () => {
       setProductPictures(pictureArray);
     }
   };
+  const handleSearch = () => {
+    const results = products.filter((product) =>
+      product.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
+    console.log(results);
+  };
+
 
   const sendProductToServer = async (product) => {
     try {
@@ -80,31 +92,126 @@ const AddProduct = () => {
       throw new Error(error.message);
     }
   };
-
+  const buttonStyle = {
+    fontFamily: 'kalnia',
+  background: 'white',
+  color: 'black',
+  textDecoration: 'none',
+  fontSize: '1.2em',
+  padding: '10px 15px',
+  border: '2.5px solid #C68763',
+  borderRadius: '8px',
+  marginLeft: '10px',
+  cursor: 'pointer',
+  };
   return (
-    <div>
-      <header>
-        <h1>Thriftn</h1>
-      </header>
-      <h2>Add Product</h2>
-      <div className="container">
-        {!submittedProduct ? (
-          <form onSubmit={handleFormSubmit}>
-            <p style={{ color: 'red' }}>* Fields are required to fill</p>
+    <div
+    style={{
+      display: 'flex',
+      background: 'linear-gradient(to right,#607F8B,#D8675B)',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      minHeight: '100vh',
+      margin: '0',
+      padding: '0',
+      width: '100%',
+      boxSizing: 'border-box',
+    }}
+  >
+    <header style={{ background: 'transparent', color: 'black', padding: '20px', textAlign: 'center', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <div>
+        <h1 style={{ margin: '0', fontFamily: 'kalnia', fontWeight: 'bold', fontSize: '2.7em' }}>
+          THr!ftN
+        </h1>
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center' }}>
+        <input
+          type="text"
+          placeholder="Search for products..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          style={{ padding: '10px', borderRadius: '5px', marginTop: '3.5%', width: '420px', border: '2px solid #C68763' }}
+        />
+        <FontAwesomeIcon icon={faSearch} style={{ fontSize: '1.5em', marginLeft: '10px', cursor: 'pointer' }} onClick={handleSearch} />
+      </div>
+      <div>
+        <Link to="/choose-category" style={buttonStyle}>
+          Sell Now
+        </Link>
+        <Link to="/donate" style={buttonStyle}>
+          Donate
+        </Link>
+        <Link to="/wishlist" style={buttonStyle}>
+          Wishlist
+        </Link>
+        <Link to="/logout" style={buttonStyle}>
+          Log Out
+        </Link>
+      </div>
+    </header>
+          {/* ... (rest of the component) ... */}
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <h2 style={{ textAlign: 'center', fontSize: '1em', fontFamily: 'Greycliff CF', color: '#000000' }}></h2>
+              <div
+                className="dark-container"
+                style={{
+                  display: 'flex',
+                  marginTop:'50px',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  backgroundColor: '#607F8B',
+                  padding: '50px',
+                  lineHeight:'80%',
+                  height:'20%',
+                  marginTop:'50px',
+                  borderRadius: '8px',
+                  width: '140%', // Adjusted width to make it a bit smaller
+                  boxSizing: 'border-box',
+                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                  marginBottom: '10px',
+                  maxHeight: '985px', // Adjusted height to make it shorter
+                  //overflow: 'auto', // Added overflow property for scrolling if needed
+          
+        }}
+      >
+      <h2  style={{ textAlign: 'center', fontSize: '2.5em', fontFamily: 'kalnia', color: '#000000' }}>Add Books</h2>
+      <div
+          className="light-container"
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            width: '100%', // Adjusted width to make it a bit bigger
+            maxWidth: '800px',
+            boxSizing: 'border-box',
+            backgroundColor: '#D99B82',
+            padding: '70px', // Adjusted padding to make it a bit bigger
+            borderRadius: '8px',
+            maxHeight: '780px', // Adjusted height to make it shorter
+            //overflow: 'auto', // Added overflow property for scrolling if needed
+          }}
+        >
+          {!submittedProduct ? (
+            <form
+              onSubmit={handleFormSubmit}
+              style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '5px' }}
+            >
+            <p style={{ color: 'red', textAlign: 'center' }}>* Fields are required to fill</p>
 
-            <label>
-              Product Pictures<span>*</span>:
+            <label style={{ flex: '1', textAlign: 'left', color: '#000000' ,fontSize: '1.3em'}}>
+            Pictures<span style={{ color: 'red' }}>*</span>:
             </label>
             <input type="file" accept="image/*" multiple onChange={handlePictureChange} />
 
-            <label>
-              Product Title<span>*</span>:
+            <label style={{ flex: '1', textAlign: 'left', color: '#000000' ,fontSize: '1.3em'}}>
+            Title<span style={{ color: 'red' }} >*</span>:
             </label>
             <input type="text" value={productTitle} onChange={(e) => setProductTitle(e.target.value)} />
 
             
 
-            <label>
+            <label style={{ flex: '1', textAlign: 'left', color: '#000000' ,fontSize: '1.3em'}}>
               Author Name:
             </label>
             <input
@@ -113,11 +220,11 @@ const AddProduct = () => {
               onChange={(e) => setAuthorName(e.target.value)}
             />
 
-            <label>
-            Book Type<span>*</span>:
+            <label style={{ flex: '1', textAlign: 'left', color: '#000000' ,fontSize: '1.3em'}}>
+            Book Genre<span>*</span>:
           </label>
           <select value={bookType} onChange={(e) => setBookType(e.target.value)}>
-            <option value="">Select Book Type</option>
+            <option value="">Select Book Genre</option>
             <option value="Action">Action</option>
             <option value="Romantic">Romantic</option>
             <option value="Historical">Historical</option>
@@ -131,7 +238,7 @@ const AddProduct = () => {
           {bookType === 'Other' && (
             <div>
               <label>
-                Other Book Type<span>*</span>:
+                Other:<span>*</span>:
               </label>
               <input
                 type="text"
@@ -140,19 +247,19 @@ const AddProduct = () => {
               />
             </div>
           )}
-            <label>
-            Product Condition<span>*</span>:
+            <label style={{ flex: '1', textAlign: 'left', color: '#000000' ,fontSize: '1.3em'}} >
+            Condition<span style={{ color: 'red' }}>*</span>:
           </label>
           <select value={productCondition} onChange={(e) => setProductCondition(e.target.value)}>
+          <option value="">Select Book Condition</option>
             <option value="Excellent">Excellent</option>
             <option value="Very Good">Very Good</option>
-            <option value="GOOD">GOOD</option>
             <option value="Average">Average</option>
             <option value="Bad">Bad</option>
           </select>
 
-            <label>
-              Product Description:
+            <label style={{ flex: '1', color: '#000000',fontSize: '1.3em'}}>
+            Description:
             </label>
             <textarea
               value={productDescription}
@@ -161,13 +268,13 @@ const AddProduct = () => {
 
             
 
-            <label>
-              Product Price<span>*</span>:
+            <label style={{ flex: '1', textAlign: 'left', color: '#000000' ,fontSize: '1.3em'}}>
+               Price<span style={{ color: 'red' }}>*</span>:
             </label>
             <input type="text" value={productPrice} onChange={(e) => setProductPrice(e.target.value)} />
 
-            <label>
-            Want to allow customer to bargain?If yes then enable the button.
+            <label style={{ textAlign: 'left', color: '#000000',fontSize: '1.3em' }}>
+            Let the customer negotiate price ?
             <Switch
               checked={isNegotiationEnabled}
               onChange={() => setIsNegotiationEnabled(!isNegotiationEnabled)}
@@ -176,18 +283,23 @@ const AddProduct = () => {
 
             {error && <p style={{ color: 'red' }}>{error}</p>}
 
-            <button type="submit">Submit</button>
+            <button 
+            type="submit"
+            style={{
+              background: '#FFFFFF', // Match the background color
+              color: '#000000', // Match the font color
+              padding: '10px',
+              cursor: 'pointer',
+            }}>Submit</button>
           </form>
         ) : (
           <ProductDetails product={submittedProduct} />
         )}
-        {!submittedProduct && (
-  <Link to="/seller-info">
-    <button>Back to Seller Info</button>
-  </Link>
-)}
-        <Link to="/choose-category">Go back</Link>
+        
+        <Link to="/choose-category"></Link>
       </div>
+    </div>
+    </div>
     </div>
   );
 };

@@ -13,19 +13,10 @@ const SellerInfo = ({ onContinue, selectedCategory }) => {
 
   const history = useHistory();
 
+  // Clear localStorage on component mount
   useEffect(() => {
-    // Load the stored state from localStorage
-    const storedState = JSON.parse(localStorage.getItem('sellerInfo'));
-    if (storedState) {
-      setFirstName(storedState.firstName);
-      setLastName(storedState.lastName);
-      setCity(storedState.city);
-      setAddress(storedState.address);
-      setPostalCode(storedState.postalCode);
-      setPhoneNumber(storedState.phoneNumber);
-      setEmail(storedState.email);
-    }
-  }, []); // Empty dependency array means this effect runs once after the initial render
+    localStorage.removeItem('sellerInfo');
+  }, []);// Empty dependency array means this effect runs once after the initial render
 
   const handleContinue = () => {
     // Check if all fields are filled
@@ -49,6 +40,14 @@ const SellerInfo = ({ onContinue, selectedCategory }) => {
 
       // Now, navigate to the selected category page
       history.push(`/add-${selectedCategory.toLowerCase()}`);
+      const lowercaseCategory = selectedCategory.toLowerCase();
+      if (lowercaseCategory === 'books') {
+        history.push('/add-book');
+      } 
+  
+
+      // Remove the stored state from localStorage
+    //localStorage.removeItem('sellerInfo');
     }
   };
 
@@ -60,7 +59,7 @@ const SellerInfo = ({ onContinue, selectedCategory }) => {
           alignItems: 'center',
           justifyContent: 'center',
           minHeight: '10vh',
-          backgroundColor: '#c6e2e9', // Match the background color of ChooseCategory
+          backgroundColor: '#D99B82', // Match the background color of ChooseCategory
           padding: '20px', // Adjust the padding to make the outer container smaller
           borderRadius: '8px', // Add border radius for rounded corners
           boxSizing: 'border-box',
@@ -123,9 +122,11 @@ const SellerInfo = ({ onContinue, selectedCategory }) => {
           type="button"
           onClick={handleContinue}
           style={{
-            background: '#f1ffc4', // Match the background color
+            background: '#FFFFFF', // Match the background color
             color: '#000000', // Match the font color
             padding: '10px',
+            border:'2 px solid #D65A45',
+            borderRadius:'8px',
             cursor: 'pointer',
           }}
         >
@@ -137,3 +138,4 @@ const SellerInfo = ({ onContinue, selectedCategory }) => {
 };
 
 export default SellerInfo;
+

@@ -1,15 +1,40 @@
 //AddClothes.js
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-
+import styled from 'styled-components'; 
 import Switch from 'react-switch';
 
 import ProductDetails from './ProductDetails';
 import './styles.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
+const Container = styled.div`
+  display: flex;
+  background: linear-gradient(to right, #607F8B, #D8675B);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  box-sizing: border-box;
+`;
+
+const Header = styled.header`
+  background: transparent;
+  color: black;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
 const AddClothes = () => {
   
   const [productTitle, setProductTitle] = useState('');
+  const [products, setProducts] = useState([]);
   const [productPictures, setProductPictures] = useState([]);
   const [productDescription, setProductDescription] = useState('');
   const [productPrice, setProductPrice] = useState('');
@@ -24,6 +49,7 @@ const AddClothes = () => {
   const [size, setSize] = useState(''); // Added size state
   const [submittedProduct, setSubmittedProduct] = useState(null);
   const [error, setError] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -84,127 +110,89 @@ const AddClothes = () => {
       throw new Error(error.message);
     }
   };
+  const handleSearch = () => {
+    const results = products.filter((product) =>
+      product.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
+    console.log(results);
+  };
+
+  const buttonStyle = {
+    fontFamily: 'kalnia',
+  background: 'white',
+  color: 'black',
+  textDecoration: 'none',
+  fontSize: '1.2em',
+  padding: '10px 15px',
+  border: '2.5px solid #C68763',
+  borderRadius: '8px',
+  marginLeft: '10px',
+  cursor: 'pointer',
+  };
 
     return (
-      <div>
-      <header
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          marginBottom: '10px',
-          background: '#a7bed3',
-          padding: '10px 20px',
-          borderRadius: '8px',
-          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-          boxSizing: 'border-box',
-        }}
-      >
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <h1
-            style={{
-              color: '#000000',
-              fontSize: '2em',
-              textTransform: 'uppercase',
-              margin: '0',
-              fontFamily: 'Greycliff CF',
-              fontWeight: 'bold',
-              letterSpacing: '4px',
-              textShadow: '4px 4px 4px rgba(0, 0, 0, 0.5)',
-              marginRight: '20px', // Added margin for separation
-            }}
-          >
+      <div
+      style={{
+        display: 'flex',
+        background: 'linear-gradient(to right,#607F8B,#D8675B)',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: '100vh',
+        margin: '0',
+        padding: '0',
+        width: '100%',
+        boxSizing: 'border-box',
+      }}
+    >
+      <header style={{ background: 'transparent', color: 'black', padding: '20px', textAlign: 'center', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div>
+          <h1 style={{ margin: '0', fontFamily: 'kalnia', fontWeight: 'bold', fontSize: '2.7em' }}>
             THr!ftN
           </h1>
-          {/* Make the search bar longer */}
-          <input
-            type="text"
-            placeholder="Search...."
-            style={{
-              padding: '4px',
-              borderRadius: '5px',
-              marginTop: '3.5%',
-              width: '400px', // Adjust the width as needed
-              border: '1px solid #000000',
-            }}
-          />
         </div>
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          {/* Wishlist button in heart shape */}
-          <Link
-            to="/wishlist"
-            style={{
-              fontFamily: 'Argent CF',
-              background: '#f1ffc4',
-              color: '#000000',
-              textDecoration: 'none',
-              fontSize: '1.2em',
-              padding: '10px 15px',
-              borderRadius: '50%', // Make it a circle
-              marginRight: '10px',
-              display: 'flex',
-              alignItems: 'center',
-            }}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#000000"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              width="24"
-              height="24"
-            >
-              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-            </svg>
-          </Link>
-          {/* Other navigation links */}
-          <Link
-            to="/your-products"
-            style={{
-              fontFamily: 'Argent CF',
-              background: '#f1ffc4',
-              color: '#000000',
-              textDecoration: 'none',
-              fontSize: '1.2em',
-              padding: '10px 15px',
-              borderRadius: '4px',
-              marginRight: '10px',
-            }}
-          >
-            My Items
-          </Link>
-          <Link
-            to="/choose-category"
-            style={{
-              fontFamily: 'Argent CF',
-              background: '#f1ffc4',
-              color: '#000000',
-              textDecoration: 'none',
-              fontSize: '1.2em',
-              padding: '10px 15px',
-              borderRadius: '4px',
-            }}
-          >
+          <input
+            type="text"
+            placeholder="Search for products..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            style={{ padding: '10px', borderRadius: '5px', marginTop: '3.5%', width: '420px', border: '2px solid #C68763' }}
+          />
+          <FontAwesomeIcon icon={faSearch} style={{ fontSize: '1.5em', marginLeft: '10px', cursor: 'pointer' }} onClick={handleSearch} />
+        </div>
+        <div>
+          <Link to="/choose-category" style={buttonStyle}>
             Sell Now
+          </Link>
+          <Link to="/donate" style={buttonStyle}>
+            Donate
+          </Link>
+          <Link to="/wishlist" style={buttonStyle}>
+            Wishlist
+          </Link>
+          <Link to="/logout" style={buttonStyle}>
+            Log Out
           </Link>
         </div>
       </header>
       {/* ... (rest of the component) ... */}
          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <h2 style={{ textAlign: 'center', fontSize: '1em', fontFamily: 'Greycliff CF', color: '#000000' }}>Clothes</h2>
+              <h2 style={{ textAlign: 'center', fontSize: '1em', fontFamily: 'Greycliff CF', color: '#000000' }}></h2>
               <div
                 className="dark-container"
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
-                  backgroundColor: '#a7bed3',
-                  padding: '50px',
+                  backgroundColor: '#607F8B',
+                  padding: '40px',
+                  //lineHeight:'90%',
+                  height:'20%',
+                  marginTop:'50px',
                   borderRadius: '8px',
-                  width: '55%', // Adjusted width to make it a bit smaller
+                  width: '95%', // Adjusted width to make it a bit smaller
                   boxSizing: 'border-box',
                   boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
                   marginBottom: '10px',
@@ -213,7 +201,7 @@ const AddClothes = () => {
           
         }}
       >
-       <h2 style={{ textAlign: 'center', fontSize: '2.5em', fontFamily: 'Greycliff CF', color: '#000000' }}>Add Clothes</h2>
+       <h2 style={{ textAlign: 'center', fontSize: '2.5em', fontFamily: 'kalnia', color: '#000000' }}>Add Clothes</h2>
         <div
           className="light-container"
           style={{
@@ -223,7 +211,7 @@ const AddClothes = () => {
             width: '100%', // Adjusted width to make it a bit bigger
             maxWidth: '900px',
             boxSizing: 'border-box',
-            backgroundColor: '#c6e2e9',
+            backgroundColor: '#D99B82',
             padding: '70px', // Adjusted padding to make it a bit bigger
             borderRadius: '8px',
             maxHeight: '780px', // Adjusted height to make it shorter
@@ -278,14 +266,14 @@ const AddClothes = () => {
                   {productCategory !== 'kids' && (
                     <div style={{ display: 'flex', gap: '10px' }}>
                       <label style={{ flex: '1', textAlign: 'left', color: '#000000',fontSize: '1.3em' }}>
-                        Stitching Preference<span style={{ color: 'red' }}>*</span>:
+                        Type<span style={{ color: 'red' }}>*</span>:
                         <select
                           value={stitchPreference}
                           onChange={(e) => setStitchPreference(e.target.value)}
                           required
                           style={{ padding: '10px' }}
                         >
-                          <option value="">Select Stitching Preference</option>
+                          <option value="">Type</option>
                           <option value="stitched">Stitched</option>
                           <option value="unstitched">Unstitched</option>
                         </select>
@@ -322,7 +310,7 @@ const AddClothes = () => {
   
                       {stitchPreference === 'unstitched' && (
                         <label style={{ flex: '1', textAlign: 'left', color: '#000000',fontSize: '1.3em' }}>
-                         Size (in meters)<span style={{ color: 'red' }}>*</span>:
+                         Size (in meters or inches)<span style={{ color: 'red' }}>*</span>:
                           <input
                             type="text"
                             value={size}
@@ -363,7 +351,6 @@ const AddClothes = () => {
                   <select value={productCondition} onChange={(e) => setProductCondition(e.target.value)} style={{ padding: '10px' }}>
                     <option value="Excellent">Excellent</option>
                     <option value="Very Good">Very Good</option>
-                    <option value="GOOD">GOOD</option>
                     <option value="Average">Average</option>
                     <option value="Bad">Bad</option>
                   </select>
@@ -413,10 +400,24 @@ const AddClothes = () => {
               </label>
   
               <div style={{ display: 'flex', gap: '10px' }}>
-                <label style={{ flex: '1', textAlign: 'left', color: '#000000',fontSize: '1.3em' }}>
-                  Color:
-                  <input type="text" value={color} onChange={(e) => setColor(e.target.value)} style={{ padding: '10px' }} />
-                </label>
+              <label style={{ flex: '1', textAlign: 'left', color: '#000000', fontSize: '1.3em' }}>
+    Color:
+    <div style={{ display: 'flex', alignItems: 'center' }}>
+      <input
+        type="color"
+        value={color}
+        onChange={(e) => setColor(e.target.value)}
+        style={{ padding: '5px' }}
+      />
+      <input
+        type="text"
+        value={color}
+        onChange={(e) => setColor(e.target.value)}
+        placeholder="Enter color"
+        style={{ padding: '10px', marginLeft: '5px', width: '150px' }}
+      />
+    </div>
+  </label>
   
                 <label style={{ flex: '1', textAlign: 'left', color: '#000000' ,fontSize: '1.3em'}}>
                   Price<span style={{ color: 'red' }}>*</span>:
@@ -442,7 +443,7 @@ const AddClothes = () => {
 <button
   type="submit"
   style={{
-    background: '#f1ffc4', // Match the background color
+    background: '#FFFFFF', // Match the background color
     color: '#000000', // Match the font color
     padding: '10px',
     cursor: 'pointer',
@@ -454,7 +455,7 @@ const AddClothes = () => {
 ) : (
 <ProductDetails product={submittedProduct} />
 )}
-
+ {submittedProduct && (
 <Link
             to="/choose-category"
             style={{
@@ -466,6 +467,7 @@ const AddClothes = () => {
           >
            Go back
           </Link>
+ )}
         </div>
       </div>
       </div>
@@ -473,5 +475,6 @@ const AddClothes = () => {
   );
 };
 
-
 export default AddClothes;
+
+

@@ -1,3 +1,8 @@
+
+// index.js
+import '@material/web/button/filled-button.js';
+import '@material/web/button/outlined-button.js';
+import '@material/web/checkbox/checkbox.js';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';

@@ -29,6 +29,20 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
+// Create a SellerInfo schema
+const sellerInfoSchema = new mongoose.Schema({
+    firstName: String,
+    lastName: String,
+    city: String,
+    address: String,
+    postalCode: String,
+    phoneNumber: String,
+    email: String,
+  });
+  
+  // Create a SellerInfo model
+  const SellerInfo = mongoose.model('SellerInfo', sellerInfoSchema);
+
 // Create a Product schema
 const productSchema = new mongoose.Schema({
     title: String,
@@ -252,8 +266,105 @@ app.post('/api/add-product', async (req, res) => {
   }
 });
 
+// Add seller information endpoint
+app.post('/api/save-seller-info', async (req, res) => {
+    console.log('Request to /api/save-seller-info:', req.body);
+    const { firstName, lastName, city, address, postalCode, phoneNumber, email } = req.body;
+  
+    try {
+      const newSellerInfo = new SellerInfo({
+        firstName,
+        lastName,
+        city,
+        address,
+        postalCode,
+        phoneNumber,
+        email,
+      });
+  
+      await newSellerInfo.save();
+  
+      res.json({ message: 'Seller information saved successfully' });
+    } catch (error) {
+      console.error('Error saving seller information:', error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  });
+
+  // Fetch all products endpoint
+app.get('/api/products', async (req, res) => {
+    try {
+      const products = await Product.find();
+      res.json(products);
+    } catch (error) {
+      console.error('Error fetching products:', error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  });
+  
+  // Fetch all products endpoint with search functionality
+  app.get('/api/products', async (req, res) => {
+    try {
+      const { search } = req.query;
+      let query = {};
+  
+      // If a search query is provided, update the query object
+      if (search) {
+        // Add conditions to search in relevant fields (e.g., title, description, category, etc.)
+        query = {
+          $or: [
+            { title: { $regex: new RegExp(search, 'i') } }, // Case-insensitive title search
+            { description: { $regex: new RegExp(search, 'i') } }, // Case-insensitive description search
+            { category: { $regex: new RegExp(search, 'i') } }, // Case-insensitive category search
+            // Add more conditions for other fields as needed
+          ],
+        };
+      }
+  
+      const products = await Product.find(query);
+      res.json(products);
+    } catch (error) {
+      console.error('Error fetching products:', error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  });
+  
+
+  // Fetch a single product by ID endpoint
+app.get('/api/products/:productId', async (req, res) => {
+    const { productId } = req.params;
+  
+    try {
+      const product = await Product.findById(productId);
+  
+      if (!product) {
+        return res.status(404).json({ message: 'Product not found' });
+      }
+  
+      res.json(product);
+    } catch (error) {
+      console.error('Error fetching product by ID:', error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  });
+  
+  
+  // Delete product endpoint
+  app.delete('/api/delete-product/:productId', async (req, res) => {
+    const { productId } = req.params;
+  
+    try {
+      await Product.findByIdAndDelete(productId);
+      res.json({ message: 'Product deleted successfully' });
+    } catch (error) {
+      console.error('Error deleting product:', error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  });
+
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 
 });
+
