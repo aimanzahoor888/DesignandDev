@@ -24,10 +24,11 @@ body {
   background-color: #f4f4f4;
   margin: 0;
   padding: 0;
-  /display: flex;  /* display: flex;  on commenting  it size will be bigger */
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+  /*align-items: center;
+  
+  justify-content: center;*/
+  
+  
 }
 
 .container {
@@ -39,7 +40,7 @@ body {
 }
 
 header {
-  background-color: #8A307F; /* Raspberry color */
+  background-color: #308a52; /* Raspberry color NO*/
   color: #fff;
   text-align: center;
   padding: 20px;
@@ -56,9 +57,9 @@ h1 {
 }
 
 h2 {
-  color: #8A307F; /* Raspberry color */
+  color: #738a30; /* Raspberry color NO */
   text-align: center;
-  font-size: 2em;
+  font-size: 1em;
   margin-top: 20px;
 }
 
@@ -81,10 +82,22 @@ h4 {
   margin-top: 90px;
 }
 
-strong {display: block;
+strong {
+  
   margin-bottom: 10px;
-  color: #8A307F; /* Raspberry color */
+  justify-content: right;
+  align-items: right;
+  color: #0a0d07; /* Raspberry color */
   font-size: 1.5em;
+  font-weight: 500;
+  font-Family: 'kalnia'; 
+  
+  
+
+}
+
+.change{
+  margin-top:-40px;
 
 }
 
@@ -92,8 +105,16 @@ strong {display: block;
 label {
   display: block;
   margin-bottom: 10px;
-  color: #8A307F; /* Raspberry color */
+  color: #330972; /* Raspberry color */
   font-size: 1.5em;
+}
+
+ProductDetailsContainer{
+  
+ 
+  color: #d16e17; /* Raspberry color */
+  font-size: 1.5em;
+
 }
 
 textarea{
@@ -120,7 +141,7 @@ input {
 }
 
 button {
-  background-color: #8A307F; /* Raspberry color */
+  background-color: #1cabcb; /* Raspberry color */
   color: #fff;
   padding: 15px 20px;
   border: none;
@@ -159,7 +180,7 @@ a:hover {
   font-size: 0.8em; /* Adjust the font size as needed */
   margin-right: 10px; /* Adjust the margin as needed */
 }
-
+ 
 .product-list {
   margin-top: 20px;
 }

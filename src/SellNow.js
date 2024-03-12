@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import 'slick-carousel/slick/slick-theme.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Row, Col } from 'antd';
+import { Row, Col } from 'antd';//check1
 
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
@@ -45,6 +45,9 @@ const sliderSettings = {
   slidesToScroll: 1,
   centerMode: true,
   centerPadding: '0',
+  autoplay: true,
+ autoplaySpeed: 4000,
+
 };
 
 const headerButtonStyle = {
@@ -203,6 +206,11 @@ const SellNow = () => {
   boxSizing: 'border-box',
   marginLeft: '20px', // Adjusted margin on the left
   marginRight: '20px', // Adjusted margin on the right
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  
 };
   return (
     <div style={{ background: gradientBackground, minHeight: '100vh', position: 'relative', overflowX: 'hidden' }}>
@@ -269,7 +277,8 @@ const SellNow = () => {
 
       {/* New Items Section */}
       <section style={{ margin: '20px 0', marginTop:'20px',marginBottom: '20px', maxWidth: '800px', width: '90%', margin: 'auto' }} className="slider">
-    <h2 style={{ color: 'black', fontSize: '2em', fontFamily: 'kalnia', marginBottom: '10px' }}>Newly Added</h2>
+      {searchResults.length === 0 && (
+    <h2 style={{ color: 'black', fontSize: '2em', fontFamily: 'kalnia', marginBottom: '10px' }}>Newly Added</h2>)}
     <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: '20px', width: '100%' }}>
       {searchResults.length > 0 ? (
         searchResults.map((product, index) => (
@@ -285,6 +294,7 @@ const SellNow = () => {
               alignItems: 'center',
               marginLeft: '28px', // Added margin on the left
               marginRight: '28px', 
+              marginTop:'70px',
             }}
             onClick={() => history.push(`/product-preview/${product._id}`)}
           >
@@ -293,14 +303,14 @@ const SellNow = () => {
             <img
               src={product.pictures[0]}
               alt={`Product ${index + 1}`}
-              style={{ width: '90%', height: 'auto', marginBottom: '20px', alignContent: 'center' }}
+              style={{ alignItems:'center',padding:'8px',width: '50%', height: 'auto', marginBottom: '10px', alignContent: 'center'  }}
               onError={(e) => console.error(`Error loading image for product ${index + 1}:`, e)}
             />
           ) : (
             <p>No image available</p>
           )}
           <p style={{ fontSize: '1.2em', fontWeight: 'bold', marginBottom: '5px' }}>{product.title}</p>
-          <p style={{ fontSize: '1em' }}>Price: ${product.price}</p>
+          <p style={{ fontSize: '1em' }}>Price: Rs{product.price}</p>
           </div>
         ))
       ) : (
@@ -317,6 +327,7 @@ const SellNow = () => {
               alignItems: 'center',
               marginLeft: '28px', // Added margin on the left
               marginRight: '28px', 
+             // objectFit: 'cover',
               
             }}
             onClick={() => history.push(`/product-preview/${product._id}`)}
@@ -332,7 +343,7 @@ const SellNow = () => {
             <p>No image available</p>
           )}
           <p style={{ fontSize: '1.2em', fontWeight: 'bold', marginBottom: '5px' }}>{product.title}</p>
-          <p style={{ fontSize: '1em' }}>Price: ${product.price}</p>
+          <p style={{ fontSize: '1em' }}>Price: Rs{product.price}</p>
           </div>
         ))
       )}
@@ -345,6 +356,7 @@ const SellNow = () => {
   <Slider {...sliderSettings}slidesToShow={3}>
     <div>
       <img src={recommendedProductImage1} alt="Product 5" style={{ height: '300px', borderRadius: '8px', width: '50%', margin: 'auto', padding: '8px', border: '10px solid #FFFFFF' }} />
+     
     </div>
     <div>
       <img src={recommendedProductImage2} alt="Product 6" style={{ height: '300px', borderRadius: '8px', width: '50%', margin: 'auto', padding: '8px', border: '10px solid #FFFFFF' }} />
@@ -414,4 +426,3 @@ const SellNow = () => {
 };
 
 export default SellNow;
-

@@ -148,9 +148,11 @@ const AddClothes = () => {
     >
       <header style={{ background: 'transparent', color: 'black', padding: '20px', textAlign: 'center', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div>
+        <Link to="/sell-now" style={{ textDecoration: 'none', color: 'black' }}>
           <h1 style={{ margin: '0', fontFamily: 'kalnia', fontWeight: 'bold', fontSize: '2.7em' }}>
             THr!ftN
           </h1>
+          </Link>
         </div>
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <input

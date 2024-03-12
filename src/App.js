@@ -13,6 +13,7 @@ import AddProduct from './AddProduct';
 import AddClothes from './AddClothes';
 import ProductDetails from './ProductDetails';
 import SellerInfo from './SellerInfo';
+import ProductPreview from './ProductPreview';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="/add-clothes" component={AddClothes} />
           <Route path="/product-details" component={ProductDetails} />
           <Route path="/seller-info" component={SellerInfo} />
+          <Route path="/product-preview/:productId" component={ProductPreview} />
           <Redirect from="/" to="/login" />
         </Switch>
       </div>
