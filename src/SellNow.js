@@ -213,7 +213,7 @@ const SellNow = () => {
   
 };
   return (
-    <div style={{ background: gradientBackground, minHeight: '100vh', position: 'relative', overflowX: 'hidden' }}>
+    <div style={{ background: '#FCF6F5', minHeight: '100vh', position: 'relative', overflowX: 'hidden' }}>
       {/* Header */}
       <header style={{ background: 'transparent', color: 'black', padding: '20px', textAlign: 'center', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div>
@@ -409,7 +409,7 @@ const SellNow = () => {
       {/* Footer */}
       <footer
         style={{
-          background: gradientBackground,
+          background: '#FCF6F5',
           color: 'black',
           textAlign: 'center',
           padding: '20px',

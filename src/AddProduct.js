@@ -159,7 +159,7 @@ publicationYear,
   };
   const darkContainerStyle = {
     ...formContainerStyle,
-    backgroundColor: '#607F8B',
+    backgroundColor: '#FCF6F5',
   };
 
   const lightContainerStyle = {
@@ -178,7 +178,7 @@ publicationYear,
         padding: '0',
         width: '100%',
         boxSizing: 'border-box',
-        background: 'linear-gradient(to right,#607F8B,#D8675B)',
+        background: '#FCF6F5',
       }}
     >
       <header style={{ background: 'transparent', color: 'black', padding: '20px', textAlign: 'center', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -224,7 +224,7 @@ publicationYear,
             {!submittedProduct ? (
               <form
                 onSubmit={handleFormSubmit}
-                style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '5px' }}
+                style={{padding:'1px', width: '110%',display: 'flex', flexDirection: 'column', gap: '5px' }}
               >
                 <p style={{ color: 'red', textAlign: 'center' }}>* Fields are required to fill</p>
 

@@ -41,16 +41,16 @@ const ForgetPassword = () => {
   };
 
   return (
-    <div style={{ display: 'flex', height: '100vh', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', background: gradientBackground, color: '#000000' }}>
+    <div style={{ display: 'flex', height: '100vh', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', background: '#FCF6F5', color: '#000000' }}>
       {/* Forget Password container */}
-      <div style={{ width: '80%', maxWidth: '400px', padding: '20px', background: '#D99B82', borderRadius: '8px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)', textAlign: 'center' }}>
+      <div style={{ width: '80%', maxWidth: '400px', padding: '20px', background: '#FCF6F5', borderRadius: '8px',  textAlign: 'center' }}>
         <h2 style={{ color: '#000000', fontSize: '2em', marginBottom: '20px', fontFamily: 'kalnia', fontWeight: 'bold', letterSpacing: '4px', textShadow: '4px 4px 4px rgba(0, 0, 0, 0.5)' }}>No worries! Enter your email to recover</h2>
 
         <form style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <label style={{ marginBottom: '5px', color: '#000000' }}>Email:</label>
           <input type="email" value={email} onChange={handleEmailChange} style={{ padding: '8px', marginBottom: '20px', borderRadius: '4px', border: '1px solid #A8CABA', width: '100%' }} />
 
-          <button type="button" onClick={handleForgetPassword} style={{ background: '#607F8B', color: '#FFFFFF', padding: '10px', borderRadius: '4px', cursor: 'pointer', width: '100%',fontFamily:'kalnia' }}>
+          <button type="button" onClick={handleForgetPassword} style={{ background: '#C68763', color: '#FFFFFF', padding: '10px', borderRadius: '4px', cursor: 'pointer', width: '100%',fontFamily:'kalnia' }}>
            <b>Submit</b>
           </button>
 

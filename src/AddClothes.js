@@ -135,7 +135,7 @@ const AddClothes = () => {
       <div
       style={{
         display: 'flex',
-        background: 'linear-gradient(to right,#607F8B,#D8675B)',
+        background: '#FCF6F5',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
@@ -188,15 +188,14 @@ const AddClothes = () => {
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
-                  backgroundColor: '#607F8B',
+                  backgroundColor: '#FCF6F5',
                   padding: '40px',
                   //lineHeight:'90%',
-                  height:'20%',
-                  marginTop:'50px',
+                  height:'50%',
+                  marginTop:'30px',
                   borderRadius: '8px',
                   width: '95%', // Adjusted width to make it a bit smaller
                   boxSizing: 'border-box',
-                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
                   marginBottom: '10px',
                   maxHeight: '985px', // Adjusted height to make it shorter
                   //overflow: 'auto', // Added overflow property for scrolling if needed

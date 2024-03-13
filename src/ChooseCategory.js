@@ -58,13 +58,13 @@ const ChooseCategory = () => {
     <div
       style={{
         display: 'flex',
-        background: 'linear-gradient(to right,#607F8B,#D8675B)',
+        background: '#FCF6F5',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
         minHeight: '100vh',
         margin: '0',
-        padding: '0',
+        padding: '20px',
         width: '100%',
         boxSizing: 'border-box',
       }}
@@ -105,7 +105,7 @@ const ChooseCategory = () => {
       <div
         className="container"
         style={{
-          background: '#607F8B',
+          background: '#FCF6F5',
           padding: '20px',
           borderRadius: '8px',
           border: '5px solid #C68763',
@@ -122,7 +122,7 @@ const ChooseCategory = () => {
                 display: 'flex',
                 flexWrap: 'wrap',
                 justifyContent: 'center',
-                gap: '20px',
+                gap: '30px',
               }}
             >
               <button

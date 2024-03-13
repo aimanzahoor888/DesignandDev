@@ -38,9 +38,9 @@ const Registration = () => {
   };
 
   return (
-    <div style={{ display: 'flex', height: '100vh', justifyContent: 'center', alignItems: 'center', background: gradientBackground }}>
+    <div style={{ display: 'flex', height: '100vh', justifyContent: 'center', alignItems: 'center', background:'#FCF6F5' }}>
       {/* Registration container */}
-      <div style={{ width: '80%', maxWidth: '400px', padding: '20px', background: '#D99B82', borderRadius: '8px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
+      <div style={{ width: '80%', maxWidth: '400px', padding: '20px', background: '#FCF6F5', borderRadius: '8px'}}>
         <h2 style={{
           color: '#000000',
           fontSize: '2em',
@@ -62,7 +62,7 @@ const Registration = () => {
           <label style={{ marginBottom: '5px', color: '#000000' }}>Password:</label>
           <input type="password" value={password} onChange={handlePasswordChange} style={{ padding: '8px', marginBottom: '20px', borderRadius: '4px', border: '1px solid #A8CABA', width: '100%' }} />
 
-          <button type="button" onClick={handleSignUp} style={{ background: '#607F8B', color: '#FFFFFF', padding: '10px', borderRadius: '4px', cursor: 'pointer', fontFamily: 'Kalnia', width: '100%' }}>
+          <button type="button" onClick={handleSignUp} style={{ background: '#C68763', color: '#FFFFFF', padding: '10px', borderRadius: '4px', cursor: 'pointer', fontFamily: 'Kalnia', width: '100%' }}>
             <b>Sign Up</b>
           </button>
 

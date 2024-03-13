@@ -34,9 +34,9 @@ const Login = () => {
   };
 
   return (
-    <div style={{ display: 'flex', height: '100vh', justifyContent: 'center', alignItems: 'center', background: gradientBackground }}>
+    <div style={{ display: 'flex', height: '100vh', justifyContent: 'center', alignItems: 'center', background: '#FCF6F5' }}>
       {/* Login container */}
-      <div style={{ width: '80%', maxWidth: '400px', padding: '20px', background: '#D99B82', borderRadius: '8px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
+      <div style={{ width: '80%', maxWidth: '400px', padding: '20px', background: '#FCF6F5', borderRadius: '8px' }}>
         <h2 style={{
           color: '#000000',
           fontSize: '3em',
@@ -58,7 +58,7 @@ const Login = () => {
           <label style={{ marginBottom: '5px', color: '#000000' }}>Password:</label>
           <input type="password" value={password} onChange={handlePasswordChange} style={{ padding: '8px', marginBottom: '20px', borderRadius: '4px', border: '1px solid #A8CABA', width: '100%' }} />
 
-          <button type="button" onClick={handleLogin} style={{ background: '#607F8B', color: '#FFFFFF', padding: '10px', borderRadius: '4px', cursor: 'pointer', fontFamily: 'Kalnia', width: '100%' }}>
+          <button type="button" onClick={handleLogin} style={{ background: '#C68763', color: '#FFFFFF', padding: '10px', borderRadius: '4px', cursor: 'pointer', fontFamily: 'Kalnia', width: '100%' }}>
             <b>Log In</b>
           </button>
 
@@ -68,7 +68,7 @@ const Login = () => {
             <Link to="/forget-password" style={{ color: '#000000', textDecoration: 'none', fontFamily:'kalnia' }}>Forgot Password ?</Link>
           </div>
 
-          <Link to="/signup" style={{ background:  '#607F8B', color: '#FFFFFF', textDecoration: 'none', fontSize: '1.3em', padding: '10px 40px', borderRadius: '4px', marginTop: '20px', display: 'block', textAlign: 'center', fontFamily: 'kalnia' }}><b>Sign Up</b></Link>
+          <Link to="/signup" style={{ background:  '#C68763', color: '#FFFFFF', textDecoration: 'none', fontSize: '1.3em', padding: '10px 40px', borderRadius: '4px', marginTop: '20px', display: 'block', textAlign: 'center', fontFamily: 'kalnia' }}><b>Sign Up</b></Link>
         </form>
       </div>
     </div>
