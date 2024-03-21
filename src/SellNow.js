@@ -6,9 +6,8 @@ import { useHistory } from 'react-router-dom';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import 'slick-carousel/slick/slick-theme.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Row, Col } from 'antd';//check1
-
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { Row, Col } from 'antd'; // Check1;
+import { faSearch, faRobot } from '@fortawesome/free-solid-svg-icons'; // Import the chatbot icon
 
 //import productImage1 from './images/product1.png';
 //import productImage2 from './images/product2.png';
@@ -55,8 +54,8 @@ const headerButtonStyle = {
   background: 'white',
   color: 'black',
   textDecoration: 'none',
-  fontSize: '1.2em',
-  padding: '10px 15px',
+  fontSize: '1em',
+  padding: '8px 10px',
   border:'2px solid #C68763',
   borderRadius: '8px',
   marginLeft: '10px',
@@ -75,7 +74,21 @@ const searchInput = {
   width: '420px',
   border: '2px solid #C68763',
 };
-
+const chatbotIconStyle = {
+  position: 'fixed',
+  bottom: '20px',
+  right: '20px',
+  backgroundColor: '#C68763',
+  color: 'white',
+  borderRadius: '50%',
+  width: '50px',
+  height: '50px',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  fontSize: '1.5em',
+  textDecoration: 'none',
+};
 const searchIconStyle = {
   fontSize: '1.5em',
   marginLeft: '10px',
@@ -245,9 +258,13 @@ const SellNow = () => {
           <Link to="/wishlist" style={headerButtonStyle}>
             Wishlist
           </Link>
+          <Link to="/about-us" style={headerButtonStyle}>
+            About Us
+          </Link>
           <Link to="/logout" style={headerButtonStyle}>
             Log Out
           </Link>
+        
         </div>
       </header>
        
@@ -421,6 +438,10 @@ const SellNow = () => {
       >
         &copy; 2023 THr!ftN. All rights reserved.
       </footer>
+
+      <Link to="/live-chat-bot" style={chatbotIconStyle}>
+        <FontAwesomeIcon icon={faRobot} />
+      </Link>
     </div>
   );
 };

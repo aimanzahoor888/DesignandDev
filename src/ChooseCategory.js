@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import SellerInfo from './SellerInfo';
 import './styles.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faShoppingCart, faRobot } from '@fortawesome/free-solid-svg-icons'; // Import the faRobot icon from '@fortawesome/free-solid-svg-icons'; 
+// Import the faShoppingCart icon
 
 const ChooseCategory = () => {
   const [personalInfo, setPersonalInfo] = useState({});
@@ -39,18 +40,36 @@ const ChooseCategory = () => {
     console.log(results);
   };
 
+  const chatbotIconStyle = {
+    position: 'fixed',
+    bottom: '20px',
+    right: '20px',
+    backgroundColor: '#C68763',
+    color: 'white',
+    borderRadius: '50%',
+    width: '50px',
+    height: '50px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: '1.5em',
+    textDecoration: 'none',
+  };
+
   const buttonStyle = {
     fontFamily: 'kalnia',
   background: 'white',
   color: 'black',
   textDecoration: 'none',
-  fontSize: '1.2em',
-  padding: '10px 15px',
+  fontSize: '1em',
+  padding: '8px 10px',
   border: '2.5px solid #C68763',
   borderRadius: '8px',
   marginLeft: '10px',
   cursor: 'pointer',
   };
+
+  
 
   console.log('Rendering ChooseCategory');
 
@@ -96,6 +115,9 @@ const ChooseCategory = () => {
           </Link>
           <Link to="/wishlist" style={buttonStyle}>
             Wishlist
+          </Link>
+          <Link to="/about-us" style={buttonStyle}>
+            About Us
           </Link>
           <Link to="/logout" style={buttonStyle}>
             Log Out
@@ -184,6 +206,9 @@ const ChooseCategory = () => {
         )}
         <Link to="/sell-now"></Link>
       </div>
+      <Link to="/live-chat-bot" style={chatbotIconStyle}>
+        <FontAwesomeIcon icon={faRobot} />
+      </Link>
     </div>
   );
 };

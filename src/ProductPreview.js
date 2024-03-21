@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
-const gradientBackground = 'linear-gradient(to right,#607F8B,#D8675B)';
+const gradientBackground = '#FCF6F5';
 //display: flex;should add
 const ProductPreviewContainer = styled.div`
 display: flex;
@@ -220,8 +220,17 @@ const ProductPreview = () => {
           ) : null
         ))}
         <BackButtonContainer>
-          <BackButton onClick={goBackToSearchResults}>Go Back</BackButton>
+        <Link to={`/sell-now`}>
+          <button >Go Back</button>
+          </Link>
+          <Link to={`/buyer-info/${productId}`}>
+            <button>Buy Now</button>
+          </Link>
         </BackButtonContainer>
+
+        
+        
+          
       </ProductDetails>
     </ProductPreviewContainer>
     </div>

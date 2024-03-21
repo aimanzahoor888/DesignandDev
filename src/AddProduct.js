@@ -111,14 +111,27 @@ publicationYear,
     background: 'white',
     color: 'black',
     textDecoration: 'none',
-    fontSize: '1.2em',
-    padding: '10px 15px',
+    fontSize: '1em',
+    padding: '8px 10px',
     border: '2.5px solid #C68763',
     borderRadius: '8px',
     marginLeft: '10px',
     cursor: 'pointer',
   };
 
+  const headerButtonStyle = {
+    fontFamily: 'kalnia',
+    background: 'white',
+    color: 'black',
+    textDecoration: 'none',
+    fontSize: '1em',
+    padding: '8px 10px',
+    border:'2px solid #C68763',
+    borderRadius: '8px',
+    marginLeft: '10px',
+    cursor: 'pointer',
+  };
+  
   const formContainerStyle = {
     display: 'flex',
     flexDirection: 'column',
@@ -145,6 +158,7 @@ publicationYear,
     border: '1px solid #ccc',
     borderRadius: '4px',
     fontSize: '1em',
+    color:'#000000',
     width: '100%',
     boxSizing: 'border-box',
   };
@@ -208,6 +222,9 @@ publicationYear,
           </Link>
           <Link to="/wishlist" style={buttonStyle}>
             Wishlist
+          </Link>
+          <Link to="/about-us" style={headerButtonStyle}>
+            About Us
           </Link>
           <Link to="/logout" style={buttonStyle}>
             Log Out
